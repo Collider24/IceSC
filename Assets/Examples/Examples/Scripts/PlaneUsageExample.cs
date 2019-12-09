@@ -5,15 +5,16 @@ using EzySlice;
 
 public class PlaneUsageExample : MonoBehaviour {
 
+    public PhysicMaterial mat;
     public GameObject source;
     public Material crossMat;
-    public bool recursiveSlice;
     public PlaneUsageExample plane;
     public string name;
     int i = 0;
+
     public void Update()
     {
-      if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Cut();
         }
@@ -47,15 +48,17 @@ public class PlaneUsageExample : MonoBehaviour {
 
             GameObject.Find("Upper_Hull").AddComponent<MeshCollider>();
             GameObject.Find("Lower_Hull").AddComponent<MeshCollider>();
-            GameObject.Find("Upper_Hull").AddComponent<NameTrigger>();
-            GameObject.Find("Lower_Hull").AddComponent<NameTrigger>();
+            GameObject.Find("Upper_Hull").tag = "Obj";
+            GameObject.Find("Lower_Hull").tag = "Obj";
+            GameObject.Find("Upper_Hull").AddComponent<Rigidbody>();
+            GameObject.Find("Lower_Hull").AddComponent<Rigidbody>();
             MeshCollider Upper = GameObject.Find("Upper_Hull").GetComponent<MeshCollider>();
             Upper.convex = true;
-            Upper.isTrigger = true;
+            Upper.material = mat;
 
             MeshCollider Lower = GameObject.Find("Lower_Hull").GetComponent<MeshCollider>();
             Lower.convex = true;
-            Lower.isTrigger = true;
+            Lower.material = mat;
 
             GameObject.Find("Upper_Hull").GetComponent<Transform>().name = "Upper_Hull" + System.Convert.ToString(i);
 

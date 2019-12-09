@@ -9,9 +9,9 @@ public class NameTrigger : MonoBehaviour {
     {
         if (other.tag == "Obj")
         {
-            pl = GameObject.Find("SlicerPlane").GetComponent<PlaneUsageExample>()   ;
+            //pl = GameObject.Find("SlicerPlane").GetComponent<PlaneUsageExample>();
 
-            pl.name = this.transform.name;
+            pl.name = other.gameObject.transform.name;
         }
     }
 }
