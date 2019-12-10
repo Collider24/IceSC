@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class hammer : MonoBehaviour
 {
     public PlaneUsageExample plane;
-    int count = 0;
+    public int count = 0;
     System.Random rnd = new System.Random();
     int max;
 
@@ -15,7 +16,7 @@ public class hammer : MonoBehaviour
         {
             if (count == 0)
             {
-                max = rnd.Next(1, 6);
+                max = rnd.Next(3, 6);
             }
             if (count == max)
             {
@@ -28,4 +29,7 @@ public class hammer : MonoBehaviour
             }
         }
     }
+
+
+
 }

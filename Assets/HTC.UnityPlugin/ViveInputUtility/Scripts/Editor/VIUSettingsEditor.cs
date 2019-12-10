@@ -657,7 +657,7 @@ namespace HTC.UnityPlugin.Vive
             if (PlayerSettings.GetUseDefaultGraphicsAPIs(buildTarget)) { return false; }
 
             var result = false;
-            var apiList = ListPool<GraphicsDeviceType>.Get();
+            var apiList = HTC.UnityPlugin.Utility.ListPool<GraphicsDeviceType>.Get();
             apiList.AddRange(PlayerSettings.GetGraphicsAPIs(buildTarget));
             if (types.Length == apiList.Count)
             {
@@ -667,7 +667,7 @@ namespace HTC.UnityPlugin.Vive
                     if (apiList[i] != types[i]) { result = false; break; }
                 }
             }
-            ListPool<GraphicsDeviceType>.Release(apiList);
+            HTC.UnityPlugin.Utility.ListPool<GraphicsDeviceType>.Release(apiList);
             return result;
         }
 
