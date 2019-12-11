@@ -13,7 +13,7 @@ public class PlaneUsageExample : MonoBehaviour {
     public string name;
     int i = 0;
     public float force;
-
+    
 
     public SlicedHull SliceObject(GameObject obj, Material crossSectionMaterial = null) {
         return obj.Slice(transform.position, transform.up, crossSectionMaterial);
@@ -45,12 +45,14 @@ public class PlaneUsageExample : MonoBehaviour {
             GameObject.Find("Upper_Hull").GetComponent<Rigidbody>().mass = 100;
             GameObject.Find("Upper_Hull").GetComponent<Rigidbody>().AddForce(transform.up * force);
             GameObject.Find("Upper_Hull").AddComponent<Interactable>();
+            GameObject.Find("Upper_Hull").GetComponent<Interactable>().snapAttachEaseInCompleted = true;
             GameObject.Find("Upper_Hull").AddComponent<VelocityEstimator>();
             GameObject.Find("Upper_Hull").AddComponent<Throwable>();
             GameObject.Find("Lower_Hull").AddComponent<Rigidbody>();
             GameObject.Find("Lower_Hull").GetComponent<Rigidbody>().mass = 100;
             GameObject.Find("Lower_Hull").GetComponent<Rigidbody>().AddForce(transform.forward * force);
             GameObject.Find("Lower_Hull").AddComponent<Interactable>();
+            GameObject.Find("Lower_Hull").GetComponent<Interactable>().snapAttachEaseInCompleted = true;
             GameObject.Find("Lower_Hull").AddComponent<VelocityEstimator>();
             GameObject.Find("Lower_Hull").AddComponent<Throwable>();
             MeshCollider Upper = GameObject.Find("Upper_Hull").GetComponent<MeshCollider>();
